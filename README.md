@@ -1,10 +1,10 @@
 # Description
 
-###**Data Science and Business Analytics(GRIP June 2021)**
+**Data Science and Business Analytics(GRIP June 2021)**
 
-####**Task 1 : Prediction using Supervised ML**
+**Task 1 : Prediction using Supervised ML**
 
-####**Author : Anjalina Tirkey**
+**Author : Anjalina Tirkey**
 
 **Prediction Statement : What will be predicted score if a student studies for 9.25 hrs/ day?**
 
@@ -12,9 +12,9 @@
 
 **Importing Important Libraries**
 
-import pandas as pd                  #used for data wrangling and data manipulation
-import numpy as np                   #used for numerical and scientific computing
-import matplotlib.pyplot as plt      #used for data visualization and graphical plotting
+import pandas as pd                  used for data wrangling and data manipulation
+import numpy as np                   used for numerical and scientific computing
+import matplotlib.pyplot as plt      used for data visualization and graphical plotting
 %matplotlib inline
 
 **Reading data from the given link**
@@ -23,20 +23,20 @@ url = 'http://bit.ly/w-data'
 data = pd.read_csv(url)
 print('Successfully Data Imported')
 
-#showing first five data
+**showing first five data**
 data.head()
 
-#showing last five data
+**showing last five data**
 data.tail()
 
 data.shape
 
-#statistical representation of data
+**statistical representation of data**
 data.describe()
 
 **Data Visualization**
 
-# Plotting the distribution of scores
+**Plotting the distribution of scores**
 data.plot(x='Hours', y='Scores', style='o')  
 plt.title('Hours vs Percentage')  
 plt.xlabel('Hours Studied')  
@@ -48,9 +48,9 @@ From the graph above, we can clearly see that there is a positive linear relatio
 data.hist(figsize = (7,4))
 plt.show()
 
-import seaborn as sns            #used for data visualization , it is built on matplotlib
-corr = data.corr()               #shows the correlation relationships between variables
-sns.heatmap(corr,annot = True)   #2D graphical represation of a correlation of all columns
+import seaborn as sns            used for data visualization , it is built on matplotlib
+corr = data.corr()               shows the correlation relationships between variables
+sns.heatmap(corr,annot = True)   2D graphical represation of a correlation of all columns
 plt.show()  
 
 A heatmap is a two-dimensional graphical representation of data where the individual values that are contained in a matrix are represented as colors.
@@ -62,24 +62,24 @@ from sklearn.linear_model import LinearRegression
 
 **Preparing the Independent variable and Dependent variable**
 
-x = data.drop('Scores',axis = 1)         #Independent variable
+x = data.drop('Scores',axis = 1)         **Independent variable**
 x.head()                       
 
-y = data['Scores']                       #Dependent variable
+y = data['Scores']                       **Dependent variable**
 y.head()
 
 **Spliting the data into training set and testing test**
 
-#taking 20% for testing and 80% for training
+**taking 20% for testing and 80% for training**
 x_train,x_test,y_train,y_test = train_test_split(x,y,test_size = 0.2 , random_state = 0)
 
-# Create linear regression object
+**Create linear regression object**
 linear = LinearRegression()
 
-#Train the model using the training sets
+**Train the model using the training sets**
 linear.fit(x_train,y_train)
 
-#gives the prediction of the train model
+**gives the prediction of the train model**
 linear.coef_
 
 linear.intercept_
@@ -96,7 +96,7 @@ plt.show()
 y_pred = linear.predict(x_test)
 y_pred 
 
-# Comparing Actual vs Predicted
+**Comparing Actual vs Predicted**
 df = pd.DataFrame({'Actual': y_test, 'Predicted': y_pred})  
 df 
 
